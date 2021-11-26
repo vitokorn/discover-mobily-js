@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<br>
+<br>
+<button class="accordion">Your Playlists</button>
+<div class="panel">
+    <div id="playlistlist" style="justify-content: center" class="pl">
+        {% for p in pl %}
+        <div id="{{ p['id'] }}" class="hr-line-dashed">{{ p['name'] }}</div>
+        {% endfor %}
+    </div>
+    <div id="playlist" class="con2"></div>
+</div>
+<button class="accordion" id="ta">Your Top Artists</button>
+<div class="panel">
+    <div class="info">
+        <span id="topartists">Last month</span>
+        <button id="refresh_topartists" class="refresh-end" onclick="refr('refresh_topartists')"><img
+                id="icon_topartists" height="12" src="../static/images/refresh-icon.svg"></button>
+        <span id="topartists6">Last 6 month</span>
+        <button id="refresh_topartists6" class="refresh-end" onclick="refr('refresh_topartists6')"><img
+                id="icon_topartists6" height="12" src="../static/images/refresh-icon.svg"></button>
+        <span id="topartistsall">All time</span>
+        <button id="refresh_topartistsall" class="refresh-end" onclick="refr('refresh_topartistsall')"><img
+                id="icon_topartistsall" height="12" src="../static/images/refresh-icon.svg"></button>
+    </div>
+    <div style="display: none" id="artists" class="con2"></div>
+    <div style="display: none" id="artists6" class="con2"></div>
+    <div style="display: none" id="artistsall" class="con2"></div>
+</div>
+<button class="accordion" id="tt">Your Top tracks</button>
+<div class="panel">
+    <span id="toptracks">Last month</span>
+    <button id="refresh_toptracks" class="refresh-end" onclick="refr('refresh_toptracks')"><img id="icon_toptracks"
+                                                                                                height="12"
+                                                                                                src="../static/images/refresh-icon.svg">
+    </button>
+    <span id="toptrackssix">Last 6 month</span>
+    <button id="refresh_toptrackssix" class="refresh-end" onclick="refr('refresh_toptrackssix')"><img
+            id="icon_toptrackssix" height="12" src="../static/images/refresh-icon.svg"></button>
+    <span id="toptracksall">All time</span>
+    <button id="refresh_toptracksall" class="refresh-end" onclick="refr('refresh_toptracksall')"><img
+            id="icon_toptracksall" height="12" src="../static/images/refresh-icon.svg"></button>
+    <div style="display: none" id="toptrack" class="con2"></div>
+    <div style="display: none" id="toptrack6" class="con2"></div>
+    <div style="display: none" id="toptrackat" class="con2"></div>
+</div>
+<button id="sva" class="accordion">Your Saved albums</button>
+<div class="panel">
+    <button id="refresh_savedalbum" class="refresh-end" onclick="refr('refresh_savedalbum')"><img
+            id="icon_savedalbum" height="12" src="../static/images/refresh-icon.svg"></button>
+    <div id="savedalbum" class="con2"></div>
+</div>
+<button id="svt" class="accordion">Your Saved tracks</button>
+<div class="panel">
+    <button id="refresh_savedtrack" class="refresh-end" onclick="refr('refresh_savedtrack')"><img
+            id="icon_savedtrack" height="12" src="../static/images/refresh-icon.svg"></button>
+    <div id="savedtrack" class="con2"></div>
+</div>
+<button id="followedartists" class="accordion">Your Followed artists</button>
+<div class="panel">
+    <button id="refresh_followedartist" class="refresh-end" onclick="refr('refresh_followedartist')"><img
+            id="icon_followedartist" height="12" src="../static/images/refresh-icon.svg"></button>
+    <div style="display: none" id="followedartist" class="con2"></div>
+</div>
+<button class="accordion" onclick="fetchSpotPlaylists(0)">Spotify Playlists</button>
+<div class="panel">
+    <div id="sptplaylists" class="con2">
+        <div class="head">
+            <input id="spinput" autocomplete="off" class="inp" type="text" placeholder="Please enter a search term
+                ..">
+        </div>
+        <div class="sp" style="display: block">
+            <div id="splaylist" class="pl" style="justify-content: center"></div>
+        </div>
+    </div>
+</div>
+<button id="newreleases" class="accordion">New Releases</button>
+<div class="panel">
+    <button id="refresh_newrelease" class="refresh-end" onclick="refr('refresh_newrelease')"><img
+            id="icon_newrelease" height="12" src="../static/images/refresh-icon.svg"></button>
+    <div id="newrelease" class="con2"></div>
+</div>
+<label>
+    <input id="srch" type="search" autocomplete="off">
+</label>
+<div id="search" class="search" style="display: none">
+    <div style="width: 100%;display: flex;flex-flow: row wrap;">
+        <div id="searchtext"></div>
+        <div style="width: 50%">
+            <div class="stitle">Songs</div>
+            <div id="s1"></div>
+        </div>
+        <div style="width: 50%">
+            <div class="stitle">Artists</div>
+            <div id="ar1"></div>
+        </div>
+        <div style="width: 50%">
+            <div class="stitle">Albums</div>
+            <div id="al1"></div>
+        </div>
+        <div style="width: 50%">
+            <div class="stitle">Playlists</div>
+            <div id="p1"></div>
+        </div>
+        <div class="item-container" style="width: 100%;">
+            <div id="searchrt" class="rectrack">
+                <div class="hcontent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let sc = document.createElement('script')
+    sc.src = "{{ url_for('static', filename='js/scriptql.js"
+    document.body.appendChild(sc)
+</script>
+</body>
+</html>
